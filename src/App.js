@@ -1,25 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+import Root from './components/Root/Root'
+import Home from './components/Home/Home'
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import Switch from 'react-bootstrap/esm/Switch';
+import About from './components/About/About';
+import Issues from './components/Issues/Issues'
+import 'bootstrap/dist/css/bootstrap.css'
 import './App.css';
-
-function App() {
+import {  Nav, Navbar } from 'react-bootstrap';
+function App() 
+{
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+      <Navbar bg="dark" align="top">
+          <Nav.Link className="text-light" href="/root">Root</Nav.Link>
+          <Nav.Link className="text-light" href="/home">Home</Nav.Link>
+          <Nav.Link className="text-light" href="/about">About</Nav.Link>
+          <Nav.Link className="text-light" href="/issues">Issues</Nav.Link>
+        </Navbar>
+        <Switch>
+        <Route path="/root" exact component={Root}/>
+        <Route path="/home" exact component={Home}/>
+        <Route path="/about" exact component={About}/>
+        <Route path="/issues" exact component={Issues}/>
+        </Switch>
+
+
+      
+      </div>
+    </Router>
   );
 }
 
